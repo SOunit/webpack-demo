@@ -8,6 +8,7 @@ const config = {
   // 2. start module building process
   entry: './src/index.js',
   output: {
+    // __dirname is node constant variable
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
   },
