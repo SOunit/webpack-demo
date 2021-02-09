@@ -12,11 +12,22 @@ const config = {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
   },
+  mode: 'development',
   // loader, module, rules system of webpack
-  // babel-loader gives some pre-process
-  // module: {
-  //   rules: [{ use: 'babel-loader', test: /¥.js$/ }],
-  // },
+  module: {
+    rules: [
+      {
+        // babel-loader gives some pre-process
+        use: 'babel-loader',
+        test: /¥.js$/,
+      },
+      {
+        // from right to left!!!
+        use: ['style-loader', 'css-loader'],
+        test: /\.css$/,
+      },
+    ],
+  },
 };
 
 module.exports = config;
