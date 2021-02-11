@@ -12,6 +12,7 @@ const config = {
     // __dirname is node constant variable
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
+    publicPath: 'build/',
   },
   mode: 'development',
   // loader, module, rules system of webpack
