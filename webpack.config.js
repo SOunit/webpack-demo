@@ -1,6 +1,7 @@
 // webpack.config.js is special file for webpack reference
 // webpack runs on node.js!
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
   // entry point does
@@ -21,13 +22,22 @@ const config = {
         use: 'babel-loader',
         test: /¥.js$/,
       },
+      // setup for mini-css-extract-plugin
+      // https://numb86-tech.hatenablog.com/entry/2018/10/24/221130
       {
         // from right to left!!!
-        use: ['style-loader', 'css-loader'],
         test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
+      // setup for bundle css and js
+      // {
+      //   // from right to left!!!
+      //   use: ['style-loader', 'css-loader'],
+      //   test: /\.css$/,
+      // },
     ],
   },
+  plugins: [new MiniCssExtractPlugin({ filename: 'style.css' })],
 };
 
 module.exports = config;
